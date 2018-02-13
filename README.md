@@ -78,3 +78,38 @@ terraform import aws_elastic_beanstalk_environment.my_ebs_staging e-pcpeep3b3z
 ```
 
 Terraform now imported the resources into it's state.
+
+
+## 4.
+
+Now we need to add the properties to the terraform resource descriptions:
+
+```
+git checkout step-4
+```
+
+The terraform resource descriptions cannot be generated automatically
+when importing a resource as of this writing. Instead it must be written manually.
+
+You can now run
+```
+terraform plan
+```
+
+Ideally terraform says that there are no changes required, because the resource
+description in the terraform script is the same as the imported resource.
+
+If it does not, you can continue updating the terraform script until `terraform plan`
+says that the infrastructure is up to date.
+
+This is the result when running `terraform plan` in this example:
+
+```
+  ~ aws_elastic_beanstalk_environment.my_ebs_staging
+      wait_for_ready_timeout: "" => "20m"
+```
+
+Terraform only wants to update `wait_for_ready_timeout` to 20 minutes since
+terraform has a default value of 20 minutes set, even if you do not specify
+the value. This plan is safe to be applied, it won't do anything harmful.
+ 
