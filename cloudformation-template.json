@@ -1,0 +1,18 @@
+{
+    "Resources": {
+        "MyEBS": {
+            "Type": "AWS::ElasticBeanstalk::Application",
+            "Properties": {
+                "ApplicationName": "coffee-service"
+            }
+        },
+        "MyEBSStaging": {
+            "Type": "AWS::ElasticBeanstalk::Environment",
+            "Properties": {
+                "ApplicationName": "coffee-service",
+                "EnvironmentName": "staging",
+                "SolutionStackName": "64bit Amazon Linux 2017.09 v2.6.5 running Java 8"
+            }
+        }
+    }
+}
