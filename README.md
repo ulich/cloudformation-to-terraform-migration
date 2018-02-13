@@ -112,4 +112,17 @@ This is the result when running `terraform plan` in this example:
 Terraform only wants to update `wait_for_ready_timeout` to 20 minutes since
 terraform has a default value of 20 minutes set, even if you do not specify
 the value. This plan is safe to be applied, it won't do anything harmful.
- 
+
+
+## 5.
+
+Now we can remove the resources from the cloudformation stack template,
+do another `aws cloudformation update-stack` and the resources will not
+be deleted due to the `DeletionPolicy` we added in step 2. 
+
+In our case, we can even delete the whole stack because we migrated all
+the resources of the whole stack:
+
+```
+aws cloudformation delete-stack --stack-name migrationtest
+```
