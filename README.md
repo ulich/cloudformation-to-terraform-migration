@@ -6,6 +6,7 @@ To accomplish this, AWS cloudformation's `DeletionPolicy: Retain` and `terraform
 is leveraged.
 
 ## 1.
+[Show changed files in this step](https://github.com/ulich/cloudformation-to-terraform-migration/blob/step-1/cloudformation-template.json)
 
 First we create a cloudformation stack whose resources we want to migrate to terraform:
 
@@ -21,6 +22,7 @@ aws cloudformation create-stack --stack-name migrationtest --template-body file:
 
 
 ## 2.
+[Show changed files in this step](https://github.com/ulich/cloudformation-to-terraform-migration/commit/10ba7265ac7299424c1685e0ef89339d4e04c155#diff-98ff76c6620131d390ffe0c488b996db)
 
 Next we add `"DeletionPolicy" : "Retain",` to the resources we want to migrate:
 
@@ -37,6 +39,7 @@ aws cloudformation update-stack --stack-name migrationtest --template-body file:
 
 
 ## 3.
+[Show changed files in this step](https://github.com/ulich/cloudformation-to-terraform-migration/commit/b8bab6b05c05685ba4a676955e75201278e27be6#diff-0e98d84c23e702e3baa05095730661b0)
 
 Now we create a small terraform project that just defines the resources we want to migrate without any configuration:
 
@@ -81,6 +84,7 @@ Terraform now imported the resources into it's state.
 
 
 ## 4.
+[Show changed files in this step](https://github.com/ulich/cloudformation-to-terraform-migration/commit/9361f081d8f3a501a957b4c5a9ec511115460c94#diff-0e98d84c23e702e3baa05095730661b0)
 
 Now we need to add the properties to the terraform resource descriptions:
 
