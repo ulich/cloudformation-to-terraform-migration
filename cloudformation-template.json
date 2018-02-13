@@ -2,12 +2,14 @@
     "Resources": {
         "MyEBS": {
             "Type": "AWS::ElasticBeanstalk::Application",
+            "DeletionPolicy" : "Retain",
             "Properties": {
                 "ApplicationName": "coffee-service"
             }
         },
         "MyEBSStaging": {
             "Type": "AWS::ElasticBeanstalk::Environment",
+            "DeletionPolicy" : "Retain",
             "Properties": {
                 "ApplicationName": "coffee-service",
                 "EnvironmentName": "staging",
